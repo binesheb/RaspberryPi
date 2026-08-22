@@ -1,21 +1,27 @@
-import RPi.GPIO as GPIO
 import time
 
-try:
+import RPi.GPIO as GPIO
+
+PIN = 18
+
+
+def main():
     GPIO.setmode(GPIO.BOARD)
-    GPIO.setup(18, GPIO.OUT)
-    while (True):
-        GPIO.output(18, True)
-        print "Pin High"
-        time.sleep(0.5)
-        GPIO.output(18, False)
-        print "Pin Low"
-        time.sleep(0.5)
-except KeyboardInterrupt:
-    print "Exiting Program"
+    GPIO.setup(PIN, GPIO.OUT)
 
-except:
-    print "Error Occurs, Exiting Program"
+    try:
+        while True:
+            GPIO.output(PIN, GPIO.HIGH)
+            print("Pin High")
+            time.sleep(0.5)
+            GPIO.output(PIN, GPIO.LOW)
+            print("Pin Low")
+            time.sleep(0.5)
+    except KeyboardInterrupt:
+        print("Exiting Program")
+    finally:
+        GPIO.cleanup()
 
-finally:
-    GPIO.cleanup()
+
+if __name__ == "__main__":
+    main()

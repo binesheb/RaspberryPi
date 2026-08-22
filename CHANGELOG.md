@@ -4,6 +4,12 @@ All notable changes to this repository are documented here.
 
 The project follows [Semantic Versioning](https://semver.org/). Because this is a collection of small examples rather than a packaged application, versions describe the repository baseline and documentation/compatibility changes.
 
+## [Unreleased]
+
+### Fixed
+- Modernized the LED blink example for Python 3 and removed the broad exception handler so unexpected failures are no longer silently reported as normal exits.
+- Kept GPIO cleanup in a `finally` block so the pin state is released on interruption or an unexpected exception after setup.
+
 ## [0.1.1] - 2026-08-20
 
 ### Changed

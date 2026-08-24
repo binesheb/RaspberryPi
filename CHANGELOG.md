@@ -9,6 +9,7 @@ The project follows [Semantic Versioning](https://semver.org/). Because this is 
 ### Fixed
 - Modernized the LED blink example for Python 3 and removed the broad exception handler so unexpected failures are no longer silently reported as normal exits.
 - Kept GPIO cleanup in a `finally` block so the pin state is released on interruption or an unexpected exception after setup.
+- Modernized the serial example for Python 3, explicit byte writes, bounded reads, and targeted serial error handling.
 
 ## [0.1.1] - 2026-08-20
 

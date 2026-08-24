@@ -1,46 +1,45 @@
-'''
-01 - 3.3V       02 - 5V
-03 - SDA(2)     04 - 5V
-05 - SCL(3)     06 - GND
-07 - (4)        08 - TXD(14) TXD0
-09 - GND        10 - RXD(15) RXD0
-11 - (17)       12 - (18)
-13 - (27)       14 - GND
-15 - (22)       16 - (23)
-17 - 3.3V       18 - (24)
-19 - MOSI(10)   20 - GND
-21 - MISO(9)    22 - (25)
-23 - SCKL(11)   24 - (8)
-25 - GND        26 - (7)
-'''
+"""
+Simple Raspberry Pi UART send/receive example.
+
+Defaults to the primary serial alias exposed by current Raspberry Pi OS. Adjust
+`PORT` and serial parameters for the connected device.
+"""
 
 import time
+
 import serial
 
-print "Starting program"
+PORT = "/dev/serial0"
+BAUDRATE = 9600
 
-ser = serial.Serial('/dev/ttyAMA0', baudrate=9600,
-                    parity=serial.PARITY_NONE,
-                    stopbits=serial.STOPBITS_ONE,
-                    bytesize=serial.EIGHTBITS
-                    )
-time.sleep(1)
-try:
-    ser.write('Hello World\r\n')
-    ser.write('Serial Communication Using Raspberry Pi\r\n')
-    ser.write('By: Embedded Laboratory\r\n')
-    print 'Data Echo Mode Enabled'
-    while True:
-        if ser.inWaiting() > 0:
-            data = ser.read()
-            print (data)
-        
-except KeyboardInterrupt:
-    print "Exiting Program"
 
-except:
-    print "Error Occurs, Exiting Program"
+def main():
+    print("Starting program")
 
-finally:
-    ser.close()
-    pass
+    try:
+        with serial.Serial(
+            PORT,
+            baudrate=BAUDRATE,
+            parity=serial.PARITY_NONE,
+            stopbits=serial.STOPBITS_ONE,
+            bytesize=serial.EIGHTBITS,
+            timeout=1,
+        ) as ser:
+            time.sleep(1)
+            ser.write(b"Hello World\r\n")
+            ser.write(b"Serial Communication Using Raspberry Pi\r\n")
+            ser.write(b"By: Embedded Laboratory\r\n")
+            print("Data Echo Mode Enabled")
+
+            while True:
+                data = ser.read(1)
+                if data:
+                    print(data.decode(errors="replace"), end="", flush=True)
+    except KeyboardInterrupt:
+        print("\nExiting Program")
+    except serial.SerialException as exc:
+        print(f"Serial error: {exc}")
+
+
+if __name__ == "__main__":
+    main()

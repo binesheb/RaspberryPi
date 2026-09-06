@@ -20,6 +20,7 @@ These scripts directly interact with hardware. Pin numbering, permissions, Pytho
 3. Use a virtual environment for Python dependencies where practical.
 4. Test with non-critical hardware first.
 5. Check the example's supported Python version before running it; do not assume every legacy example is Python 3 compatible.
+6. **Protect Raspberry Pi GPIO inputs from 5 V signals.** The HC-SR04 example connects an Echo input directly to a GPIO pin; typical HC-SR04 modules drive Echo at 5 V, so use an appropriate level shifter or resistor divider before connecting Echo to a Raspberry Pi GPIO.
 
 ## Updating
 

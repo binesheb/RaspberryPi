@@ -6,7 +6,7 @@ A small collection of focused Raspberry Pi learning examples covering GPIO, PWM,
 
 ## Included examples
 
-- **LedBlink** — toggles GPIO 18 and includes a basic PWM duty-cycle example.
+- **LedBlink** — toggles GPIO 18 and includes a basic PWM duty-cycle example. `LedBlink.py` is Python 3 compatible; `Led_PWM.py` remains a legacy Python 2 example and is not covered by the current Python 3 CI validation.
 - **Serial** — simple serial send/receive examples, modernized for Python 3.
 - **distance** — measures distance with an HC-SR04 sensor and transmits the result over serial. This legacy example still uses Python 2 syntax and should be treated as reference-only until it is explicitly audited and modernized.
 - **PyQt5** — minimal Python/Qt message-box example.
@@ -61,7 +61,7 @@ Repository maintenance follows [Semantic Versioning](https://semver.org/): patch
 
 ## Next modernization steps
 
-- Audit the remaining legacy examples, especially the HC-SR04 distance example, against current Raspberry Pi OS and supported Python versions.
+- Audit the remaining legacy examples, especially the HC-SR04 distance example and the `Led_PWM.py` PWM example, against current Raspberry Pi OS and supported Python versions.
 - Add dependency metadata and per-example setup instructions.
 - Add safe GPIO cleanup and validation where legacy scripts need it.
 - Establish tested tagged releases before introducing unattended updates.

@@ -2,6 +2,8 @@
 
 A small collection of focused Raspberry Pi learning examples covering GPIO, PWM, serial communication, ultrasonic distance measurement, and a basic PyQt5 interface.
 
+[![Python syntax validation](https://github.com/binesheb/RaspberryPi/actions/workflows/python-syntax.yml/badge.svg)](https://github.com/binesheb/RaspberryPi/actions/workflows/python-syntax.yml)
+
 > **Status:** historical/learning repository. The examples were originally added in 2018–2019 and are preserved as a reference baseline rather than presented as a modern Raspberry Pi framework.
 
 ## Included examples
@@ -58,6 +60,10 @@ Automatic self-updating is intentionally **not enabled**. These examples can con
 ## Versioning and releases
 
 Repository maintenance follows [Semantic Versioning](https://semver.org/): patch releases cover safe fixes and documentation, minor releases add backward-compatible examples or capabilities, and major releases may change compatibility or structure. See [CHANGELOG.md](CHANGELOG.md) for release notes.
+
+## Validation
+
+The repository has a lightweight GitHub Actions check that verifies the currently supported Python 3 example paths and compiles them with Python 3.12. It intentionally excludes the legacy Python 2 examples. Hardware behaviour, GPIO safety, serial-device availability, and current Raspberry Pi OS compatibility still require testing on a real device.
 
 ## Next modernization steps
 
